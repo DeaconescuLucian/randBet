@@ -5,12 +5,12 @@ on:
     branches: ["main"]
     paths:
       - "services/access-service/**"
-      - ".github/workflows/access-service.yml"
+      - ".github/workflows/access-service-docker.yml"
   pull_request:
     branches: ["main"]
-      paths:
+    paths:
       - "services/access-service/**"
-      - ".github/workflows/access-service.yml"
+      - ".github/workflows/access-service-docker.yml"
 
 jobs:
   build-and-optional-push:
