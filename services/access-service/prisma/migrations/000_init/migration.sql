@@ -1,0 +1,15 @@
+-- CreateTable User
+CREATE TABLE IF NOT EXISTS "User" (
+  "id" SERIAL PRIMARY KEY,
+  "email" TEXT NOT NULL UNIQUE,
+  "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+-- CreateTable UserPassword (1:1 with User)
+CREATE TABLE IF NOT EXISTS "UserPassword" (
+  "id" SERIAL PRIMARY KEY,
+  "userId" INTEGER NOT NULL UNIQUE,
+  "passwordHash" TEXT NOT NULL,
+  "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT "UserPassword_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE
+);
